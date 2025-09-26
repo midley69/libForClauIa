@@ -1,0 +1,348 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Amélioration de la responsivité globale */
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Adaptation aux petits écrans */
+@media (max-width: 640px) {
+  .mobile-scroll {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .mobile-padding {
+    padding: 0.75rem;
+  }
+  
+  .mobile-text {
+    font-size: 0.875rem;
+  }
+}
+
+/* Adaptation aux écrans moyens */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .tablet-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Adaptation aux grands écrans */
+@media (min-width: 1025px) {
+  .desktop-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Safe area support for mobile devices */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* Hauteur dynamique pour mobile */
+.dynamic-height {
+  height: 100vh;
+  height: 100dvh; /* Dynamic viewport height */
+}
+
+/* Conteneur flexible pour le contenu */
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* Scroll personnalisé pour les conteneurs */
+.custom-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 212, 255, 0.5) transparent;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: rgba(0, 212, 255, 0.5);
+  border-radius: 2px;
+}
+
+/* Amélioration des cartes responsives */
+.responsive-card {
+  padding: 1rem;
+  margin: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .responsive-card {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-card {
+    padding: 2rem;
+    margin: 1.5rem;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 212, 255, 0.5);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 212, 255, 0.7);
+}
+
+/* Ensure proper touch targets on mobile */
+@media (max-width: 768px) {
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Améliorer l'espacement sur mobile */
+  .mobile-spacing > * + * {
+    margin-top: 1rem;
+  }
+  
+  /* Texte plus lisible sur mobile */
+  .mobile-text-size {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+}
+
+/* Animations plus douces */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s infinite;
+}
+
+/* Indicateur de mise à jour en temps réel */
+.live-indicator {
+  position: relative;
+}
+
+.live-indicator::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 8px;
+  height: 8px;
+  background: #00ff00;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Transitions plus douces */
+* {
+  transition-duration: 200ms;
+}
+
+.transition-slow {
+  transition-duration: 500ms;
+}
+
+/* Hover effects plus subtils */
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+  transition: box-shadow 0.3s ease;
+}
+
+/* Réduire les effets de blur pour de meilleures performances */
+.backdrop-blur-sm {
+  backdrop-filter: blur(4px);
+}
+
+.backdrop-blur-md {
+  backdrop-filter: blur(8px);
+}
+
+/* Améliorer les performances des gradients */
+.bg-gradient-perf {
+  background: linear-gradient(135deg, rgba(15, 15, 35, 0.9) 0%, rgba(26, 26, 46, 0.9) 50%, rgba(22, 33, 62, 0.9) 100%);
+}
+
+/* Messages animations */
+.message-enter {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Loading spinner plus doux */
+@keyframes spin-soft {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-soft {
+  animation: spin-soft 2s linear infinite;
+}
+
+/* Amélioration des grilles responsives */
+.responsive-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .responsive-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+}
+
+/* Conteneur de statistiques responsive */
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 640px) {
+  .stats-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    padding: 0.75rem;
+  }
+}
+
+/* Amélioration des boutons pour mobile */
+@media (max-width: 640px) {
+  .mobile-button {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    min-height: 44px;
+  }
+}
+
+/* Conteneur de messages responsive */
+.messages-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  min-height: 0;
+}
+
+@media (max-width: 640px) {
+  .messages-container {
+    padding: 0.75rem;
+  }
+}
+
+/* Amélioration de l'input de message */
+.message-input-container {
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 640px) {
+  .message-input-container {
+    padding: 0.75rem;
+  }
+  
+  /* Améliorer la navigation mobile */
+  .mobile-header {
+    padding: 0.75rem;
+  }
+  
+  .mobile-header h1 {
+    font-size: 1.125rem;
+  }
+  
+  /* Optimiser l'affichage des messages sur mobile */
+  .message-bubble {
+    max-width: 85%;
+    font-size: 0.875rem;
+  }
+  
+  /* Améliorer les boutons de contrôle */
+  .chat-controls {
+    padding: 0.5rem;
+    gap: 0.5rem;
+  }
+  
+  .chat-controls button {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.5rem;
+  }
+}
